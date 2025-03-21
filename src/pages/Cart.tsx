@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import { CartContext } from "../contexts/CartContext";
+import useCartContext from "../hooks/useCartContext";
 
 export default function CartPage() {
-  const { cartItems } = useContext(CartContext);
+  const { cartItems } = useCartContext();
   console.log(cartItems);
   return (
     <>
