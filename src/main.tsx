@@ -5,6 +5,7 @@ import "./index.css";
 import Homepage from "./pages/Home.tsx";
 import PageNotFound from "./pages/PageNotFound.tsx";
 import ShopPage from "./pages/Shop.tsx";
+import CartPage from "./pages/Cart.tsx";
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,7 @@ const router = createBrowserRouter([
   },
   {
     path: "cart",
-    element: <p>cart page</p>,
+    element: <CartPage />,
   },
   {
     path: "*",
