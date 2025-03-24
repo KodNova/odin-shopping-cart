@@ -3,7 +3,7 @@ import { CartItem } from "../types";
 
 type CartContext = {
   cartItems: CartItem[];
-  addToCart: () => void;
+  addToCart: (item: CartItem) => void;
 };
 
 type CartContextProviderProps = {
@@ -20,9 +20,12 @@ export default function CartContextProvider({
 }: CartContextProviderProps) {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
-  const addToCart = () => {
-    console.log("added item to cart.");
-    setCartItems(cartItems);
+  const addToCart = (item: CartItem) => {
+    console.log(`added ${item} to cart.`);
+    setCartItems((prevCartItems) => {
+      const newCartItems = [...prevCartItems, item];
+      return newCartItems;
+    });
   };
 
   return (
