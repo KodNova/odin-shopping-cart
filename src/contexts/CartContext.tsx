@@ -1,9 +1,9 @@
 import { createContext, useState } from "react";
-import { CartItem } from "../types";
+import { CartItem, ShopItem } from "../types";
 
 type CartContext = {
   cartItems: CartItem[];
-  addToCart: (item: CartItem) => void;
+  addToCart: (item: ShopItem, quantity: number) => void;
 };
 
 type CartContextProviderProps = {
@@ -20,10 +20,10 @@ export default function CartContextProvider({
 }: CartContextProviderProps) {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
-  const addToCart = (item: CartItem) => {
-    console.log(`added ${item} to cart.`);
+  const addToCart = (item: ShopItem, quantity: number) => {
+    const newItem: CartItem = { ...item, quantity };
     setCartItems((prevCartItems) => {
-      const newCartItems = [...prevCartItems, item];
+      const newCartItems = [...prevCartItems, newItem];
       return newCartItems;
     });
   };

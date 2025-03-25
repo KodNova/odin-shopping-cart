@@ -1,8 +1,11 @@
+import useCartContext from "../hooks/useCartContext";
 import useFetchItems from "../hooks/usefetchItems";
 import { ShopItem } from "../types";
+import ItemCard from "./ItemCard";
 
 export default function ShopItemContainer() {
   const items = useFetchItems();
+  const { addToCart } = useCartContext();
 
   if (!items) {
     return <p>Loading...</p>;
@@ -12,11 +15,7 @@ export default function ShopItemContainer() {
     <div>
       <div className="flex">
         {items.map((item: ShopItem) => (
-          <div className="w-1/5" key={item.id}>
-            <h3>{item.title}</h3>
-            <p>${item.price}</p>
-            <img className="w-30" src={item.image} alt={item.title} />
-          </div>
+          <ItemCard key={item.id} item={item} addToCart={addToCart} />
         ))}
       </div>
     </div>
