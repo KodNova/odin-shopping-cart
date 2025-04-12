@@ -12,7 +12,7 @@ export default function ShopItemCard({ item, addToCart }: ItemCardProps) {
     <div className="w-1/5" key={item.id}>
       <img className="w-30" src={item.image} alt={item.title} />
       <h3>{item.title}</h3>
-      <p>${item.price}</p>
+      <p>€{item.price}</p>
       <div>
         <input
           className="w-10 rounded-3xl bg-amber-100 text-center"
