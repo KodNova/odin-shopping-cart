@@ -6,6 +6,7 @@ import Homepage from "./pages/Home.tsx";
 import PageNotFound from "./pages/PageNotFound.tsx";
 import ShopPage from "./pages/Shop.tsx";
 import CartPage from "./pages/Cart.tsx";
+import CartContextProvider from "./contexts/CartContext.tsx";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <CartContextProvider>
+      <RouterProvider router={router} />
+    </CartContextProvider>
   </StrictMode>,
 );

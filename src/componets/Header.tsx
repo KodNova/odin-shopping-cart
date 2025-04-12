@@ -4,8 +4,8 @@ export default function Header() {
     <div className="flex justify-between border-1 border-black p-2">
       <h1 className="text-2xl">Minimalist Menswear</h1>
       <div className="flex gap-4">
-        <Link to="shop">Shop</Link>
-        <Link to="cart">Cart</Link>
+        <Link to="/shop">Shop</Link>
+        <Link to="/cart">Cart</Link>
       </div>
     </div>
   );
