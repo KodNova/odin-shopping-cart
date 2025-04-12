@@ -52,8 +52,6 @@ export default function CartContextProvider({
     checkIfItemExist(item)
       ? setCartItems(updateExistingItemQuanity(cartItems, item, quantity))
       : setCartItems(addNewItemToCart(cartItems, item, quantity));
-    console.log("addToCart ran");
-    console.log(cartItems);
   };
 
   return (
