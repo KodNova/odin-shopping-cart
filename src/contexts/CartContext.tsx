@@ -26,11 +26,10 @@ export default function CartContextProvider({
 
   // addToCart helper 2
   const updateExistingItemQuanity = (
-    currentCart: CartItem[],
     itemToUpdate: ShopItem,
     quantityToAdd: number,
   ): CartItem[] => {
-    return currentCart.map((cartItem: CartItem) =>
+    return cartItems.map((cartItem: CartItem) =>
       cartItem.id === itemToUpdate.id
         ? { ...cartItem, quantity: cartItem.quantity + quantityToAdd }
         : cartItem,
@@ -39,20 +38,25 @@ export default function CartContextProvider({
 
   // addToCart helper 3
   const addNewItemToCart = (
-    currentCart: CartItem[],
     itemToAdd: ShopItem,
     quantity: number,
   ): CartItem[] => {
     const newItem: CartItem = { ...itemToAdd, quantity };
-    return [...currentCart, newItem];
+    return [...cartItems, newItem];
   };
 
   // add to cart function
   const addToCart = (item: ShopItem, quantity: number) => {
     checkIfItemExist(item)
-      ? setCartItems(updateExistingItemQuanity(cartItems, item, quantity))
-      : setCartItems(addNewItemToCart(cartItems, item, quantity));
+      ? setCartItems(updateExistingItemQuanity(item, quantity))
+      : setCartItems(addNewItemToCart(item, quantity));
   };
+
+  // const removeFromCart = (item:CartItem) => {
+  //   if checkIfItemExist(item) {
+  //     updateExistingItemQuanity()
+  //   }
+  // }
 
   return (
     <CartContext.Provider value={{ cartItems, addToCart }}>
