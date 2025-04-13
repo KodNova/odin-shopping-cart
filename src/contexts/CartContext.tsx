@@ -4,6 +4,7 @@ import { CartItem, ShopItem } from "../types";
 type CartContext = {
   cartItems: CartItem[];
   addToCart: (item: ShopItem, quantity: number) => void;
+  decreaseQuantity: (item: CartItem, quantity: number) => void;
 };
 
 type CartContextProviderProps = {
@@ -13,6 +14,7 @@ type CartContextProviderProps = {
 export const CartContext = createContext<CartContext>({
   cartItems: [],
   addToCart: () => {},
+  decreaseQuantity: () => {},
 });
 
 export default function CartContextProvider({
@@ -20,42 +22,48 @@ export default function CartContextProvider({
 }: CartContextProviderProps) {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
-  // addToCart helper 1
+  // helper 1
   const checkIfItemExist = (newItem: ShopItem): boolean =>
     cartItems.some((item) => newItem.id === item.id);
 
-  // addToCart helper 2
+  // helper 2
   const updateExistingItemQuanity = (
-    currentCart: CartItem[],
     itemToUpdate: ShopItem,
-    quantityToAdd: number,
+    quantityDiff: number,
   ): CartItem[] => {
-    return currentCart.map((cartItem: CartItem) =>
+    const updatedCart: CartItem[] = cartItems.map((cartItem: CartItem) =>
       cartItem.id === itemToUpdate.id
-        ? { ...cartItem, quantity: cartItem.quantity + quantityToAdd }
+        ? { ...cartItem, quantity: cartItem.quantity + quantityDiff }
         : cartItem,
     );
+
+    return updatedCart.filter((item: CartItem) => item.quantity > 0);
   };
 
-  // addToCart helper 3
+  // helper 3
   const addNewItemToCart = (
-    currentCart: CartItem[],
     itemToAdd: ShopItem,
     quantity: number,
   ): CartItem[] => {
     const newItem: CartItem = { ...itemToAdd, quantity };
-    return [...currentCart, newItem];
+    return [...cartItems, newItem];
   };
 
   // add to cart function
   const addToCart = (item: ShopItem, quantity: number) => {
     checkIfItemExist(item)
-      ? setCartItems(updateExistingItemQuanity(cartItems, item, quantity))
-      : setCartItems(addNewItemToCart(cartItems, item, quantity));
+      ? setCartItems(updateExistingItemQuanity(item, quantity))
+      : setCartItems(addNewItemToCart(item, quantity));
+  };
+
+  // if item exist in cart will use updateExistingItem to reduce or remove.
+  const decreaseQuantity = (item: CartItem, quantity: number) => {
+    if (checkIfItemExist(item))
+      setCartItems(updateExistingItemQuanity(item, quantity));
   };
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart }}>
+    <CartContext.Provider value={{ cartItems, addToCart, decreaseQuantity }}>
       {children}
     </CartContext.Provider>
   );
