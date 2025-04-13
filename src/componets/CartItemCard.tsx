@@ -15,13 +15,13 @@ export default function CartItemCard({
     <div>
       <img className="w-30" src={item.image} alt={item.title} />
       <h3>{item.title}</h3>
-      <p>€{item.price}</p>
+      <p>€{item.price.toFixed(2)}</p>
       <div>
         <button onClick={() => decreaseQuantity(item, -1)}>-</button>
         <p>quantity: {item.quantity}</p>
         <button onClick={() => addToCart(item, 1)}>+</button>
       </div>
-      <p>Total: €{item.price * item.quantity}</p>
+      <p>Total: €{(item.price * item.quantity).toFixed(2)}</p>
       <button
         className="border-1 border-black p-1"
         onClick={() => decreaseQuantity(item, -item.quantity)}

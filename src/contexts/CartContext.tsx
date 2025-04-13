@@ -5,6 +5,7 @@ type CartContext = {
   cartItems: CartItem[];
   addToCart: (item: ShopItem, quantity: number) => void;
   decreaseQuantity: (item: CartItem, quantity: number) => void;
+  getCartTotal: () => number;
 };
 
 type CartContextProviderProps = {
@@ -15,6 +16,7 @@ export const CartContext = createContext<CartContext>({
   cartItems: [],
   addToCart: () => {},
   decreaseQuantity: () => {},
+  getCartTotal: () => 0,
 });
 
 export default function CartContextProvider({
@@ -62,8 +64,13 @@ export default function CartContextProvider({
       setCartItems(updateExistingItemQuanity(item, quantity));
   };
 
+  const getCartTotal = (): number =>
+    cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, decreaseQuantity }}>
+    <CartContext.Provider
+      value={{ cartItems, addToCart, decreaseQuantity, getCartTotal }}
+    >
       {children}
     </CartContext.Provider>
   );
