@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { ShopItem } from "../types";
 
-type ItemCardProps = {
+type ShopItemCardProps = {
   item: ShopItem;
   addToCart: (item: ShopItem, quantity: number) => void;
 };
 
-export default function ShopItemCard({ item, addToCart }: ItemCardProps) {
+export default function ShopItemCard({ item, addToCart }: ShopItemCardProps) {
   const [quantity, setQuantity] = useState<number>(1);
   return (
-    <div className="w-1/5" key={item.id}>
+    <div className="w-1/5">
       <img className="w-30" src={item.image} alt={item.title} />
       <h3>{item.title}</h3>
       <p>€{item.price}</p>
