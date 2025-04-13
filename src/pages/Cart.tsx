@@ -3,8 +3,16 @@ import useCartContext from "../hooks/useCartContext";
 import { CartItem } from "../types";
 
 export default function CartPage() {
-  const { cartItems } = useCartContext();
-  console.log(cartItems);
+  const { cartItems, decreaseQuantity } = useCartContext();
+
+  if (cartItems.length < 1)
+    return (
+      <>
+        <Header />
+        <p>You have nothing in you cart.</p>;
+      </>
+    );
+
   return (
     <>
       <Header />
@@ -16,6 +24,12 @@ export default function CartPage() {
             <p>€{item.price}</p>
             <p>quantity: {item.quantity}</p>
             <p>Total: €{item.price * item.quantity}</p>
+            <button
+              className="border-1 border-black p-1"
+              onClick={() => decreaseQuantity(item, -item.quantity)}
+            >
+              Remove
+            </button>
           </div>
         ))}
       </div>

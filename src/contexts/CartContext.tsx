@@ -56,6 +56,7 @@ export default function CartContextProvider({
       : setCartItems(addNewItemToCart(item, quantity));
   };
 
+  // if item exist in cart will use updateExistingItem to reduce or remove.
   const decreaseQuantity = (item: CartItem, quantity: number) => {
     if (checkIfItemExist(item))
       setCartItems(updateExistingItemQuanity(item, quantity));
