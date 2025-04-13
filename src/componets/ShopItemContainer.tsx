@@ -1,7 +1,7 @@
 import useCartContext from "../hooks/useCartContext";
 import useFetchItems from "../hooks/usefetchItems";
 import { ShopItem } from "../types";
-import ShopItemCard from "./ItemCard";
+import ShopItemCard from "./ShopItemCard";
 
 export default function ShopItemContainer() {
   const items = useFetchItems();
