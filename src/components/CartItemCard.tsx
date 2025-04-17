@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { CartItem, ShopItem } from "../types";
 
 type CartItemCardProps = {
@@ -12,22 +13,19 @@ export default function CartItemCard({
   decreaseQuantity,
 }: CartItemCardProps) {
   return (
-    <div>
-      <img className="w-30" src={item.image} alt={item.title} />
-      <h3>{item.title}</h3>
+    <div className="flex items-center justify-between gap-2 rounded-2xl bg-slate-400 p-2">
+      <img className="w-30 rounded-lg" src={item.image} alt={item.title} />
+      <h3 className="w-3/5 text-center">{item.title}</h3>
       <p>€{item.price.toFixed(2)}</p>
-      <div>
-        <button onClick={() => decreaseQuantity(item, -1)}>-</button>
-        <p>quantity: {item.quantity}</p>
-        <button onClick={() => addToCart(item, 1)}>+</button>
+      <div className="flex gap-2">
+        <Button onClick={() => decreaseQuantity(item, -1)}>-</Button>
+        <p>{item.quantity}</p>
+        <Button onClick={() => addToCart(item, 1)}>+</Button>
       </div>
       <p>Total: €{(item.price * item.quantity).toFixed(2)}</p>
-      <button
-        className="border-1 border-black p-1"
-        onClick={() => decreaseQuantity(item, -item.quantity)}
-      >
+      <Button onClick={() => decreaseQuantity(item, -item.quantity)}>
         Remove
-      </button>
+      </Button>
     </div>
   );
 }

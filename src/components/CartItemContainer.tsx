@@ -12,7 +12,7 @@ export default function CartItemContainer() {
     );
 
   return (
-    <div className="flex gap-4">
+    <div className="flex flex-col gap-4">
       {cartItems.map((item: CartItem) => (
         <CartItemCard
           key={item.id}
