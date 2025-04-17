@@ -1,5 +1,5 @@
-import CartItemContainer from "../componets/CartItemContainer";
-import Header from "../componets/Header";
+import CartItemContainer from "../components/CartItemContainer";
+import Header from "../components/Header";
 import useCartContext from "../hooks/useCartContext";
 
 export default function CartPage() {

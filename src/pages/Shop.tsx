@@ -1,5 +1,5 @@
-import Header from "../componets/Header";
-import ShopItemContainer from "../componets/ShopItemContainer";
+import Header from "../components/Header";
+import ShopItemContainer from "../components/ShopItemContainer";
 
 export default function ShopPage() {
   return (

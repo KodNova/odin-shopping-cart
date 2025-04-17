@@ -1,5 +1,5 @@
 import { buttonVariants } from "@/components/ui/button";
-import Header from "../componets/Header";
+import Header from "../components/Header";
 import { Link } from "react-router-dom";
 export default function Homepage() {
   return (
