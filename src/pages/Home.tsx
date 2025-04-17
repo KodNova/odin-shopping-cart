@@ -1,4 +1,6 @@
+import { buttonVariants } from "@/components/ui/button";
 import Header from "../componets/Header";
+import { Link } from "react-router-dom";
 export default function Homepage() {
   return (
     <>
@@ -8,6 +10,9 @@ export default function Homepage() {
           <div className="flex flex-col items-center">
             <h1 className="text-2xl">Welcome to Minimalist Menswear</h1>
             <p>Curated collection of timeless essentials for the modern man.</p>
+            <Link to="/shop" className={buttonVariants({ variant: "outline" })}>
+              Shop Now
+            </Link>
           </div>
         </div>
       </div>

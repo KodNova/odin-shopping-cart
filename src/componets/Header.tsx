@@ -1,3 +1,4 @@
+import { buttonVariants } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 export default function Header() {
   return (
@@ -6,8 +7,12 @@ export default function Header() {
         Minimalist Menswear
       </Link>
       <div className="flex gap-4">
-        <Link to="/shop">Shop</Link>
-        <Link to="/cart">Cart</Link>
+        <Link to="/shop" className={buttonVariants({ variant: "link" })}>
+          Shop
+        </Link>
+        <Link to="/cart" className={buttonVariants({ variant: "link" })}>
+          Cart
+        </Link>
       </div>
     </div>
   );
