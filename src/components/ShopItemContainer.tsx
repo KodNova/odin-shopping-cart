@@ -12,12 +12,12 @@ export default function ShopItemContainer() {
   }
 
   return (
-    <div>
+    <>
       <div className="flex gap-4">
         {items.map((item: ShopItem) => (
           <ShopItemCard key={item.id} item={item} addToCart={addToCart} />
         ))}
       </div>
-    </div>
+    </>
   );
 }

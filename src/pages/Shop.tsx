@@ -5,7 +5,6 @@ export default function ShopPage() {
   return (
     <>
       <Header />
-      <p>Our Best Sellers</p>
       <ShopItemContainer />
     </>
   );
