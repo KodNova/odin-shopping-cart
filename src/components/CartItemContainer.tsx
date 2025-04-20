@@ -6,13 +6,13 @@ export default function CartItemContainer() {
   const { cartItems, addToCart, decreaseQuantity } = useCartContext();
   if (cartItems.length < 1)
     return (
-      <>
-        <p>You have nothing in your cart.</p>
-      </>
+      <div className="flex flex-col gap-2 rounded-2xl bg-slate-500 p-5">
+        <p className="text-2xl">You have nothing in your cart.</p>
+      </div>
     );
 
   return (
-    <div className="flex gap-4">
+    <div className="flex flex-col gap-2 rounded-2xl bg-slate-500 p-5">
       {cartItems.map((item: CartItem) => (
         <CartItemCard
           key={item.id}

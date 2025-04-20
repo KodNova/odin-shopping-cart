@@ -1,14 +1,15 @@
-import CartItemContainer from "../componets/CartItemContainer";
-import Header from "../componets/Header";
-import useCartContext from "../hooks/useCartContext";
+import { CheckoutSideBar } from "@/components/CheckoutSideBar";
+import CartItemContainer from "../components/CartItemContainer";
+import Header from "../components/Header";
 
 export default function CartPage() {
-  const { getCartTotal } = useCartContext();
   return (
     <>
       <Header />
-      <CartItemContainer />
-      <p>Total price: €{getCartTotal().toFixed(2)} </p>
+      <div className="flex flex-col items-center gap-4 md:flex-row md:items-start md:justify-center md:gap-2">
+        <CartItemContainer />
+        <CheckoutSideBar />
+      </div>
     </>
   );
 }

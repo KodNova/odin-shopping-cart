@@ -12,12 +12,12 @@ export default function ShopItemContainer() {
   }
 
   return (
-    <div>
-      <div className="flex">
+    <>
+      <div className="grid gap-4 md:flex md:justify-center">
         {items.map((item: ShopItem) => (
           <ShopItemCard key={item.id} item={item} addToCart={addToCart} />
         ))}
       </div>
-    </div>
+    </>
   );
 }
