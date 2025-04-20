@@ -7,7 +7,7 @@ export default function CartItemContainer() {
   if (cartItems.length < 1)
     return (
       <div className="flex flex-col gap-2 rounded-2xl bg-slate-500 p-5">
-        <p>You have nothing in your cart.</p>
+        <p className="text-2xl">You have nothing in your cart.</p>
       </div>
     );
 

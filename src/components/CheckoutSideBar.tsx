@@ -9,12 +9,18 @@ export function CheckoutSideBar() {
   const [thankYou, setThankYou] = useState(false);
 
   return (
-    <div className="flex w-2/6 flex-col items-center rounded-2xl bg-slate-400 p-2">
-      <p>Gross: €{grossTotal.toFixed(2)}</p>
-      <p>Shipping: €{shiping.toFixed(2)} </p>
-      <p>Total: €{(grossTotal + shiping).toFixed(2)}</p>
-      <Button onClick={() => setThankYou(true)}>Checkout</Button>
-      {thankYou ? <p className="text-lg font-bold">Thank you!</p> : null}
+    <div className="flex w-2/6 flex-col items-center rounded-2xl bg-slate-400 p-2 text-2xl">
+      <p className="border-b-1 border-black">Gross: €{grossTotal.toFixed(2)}</p>
+      <p className="border-b-1 border-black">
+        Shipping: €{shiping.toFixed(2)}{" "}
+      </p>
+      <p className="border-b-1 border-black">
+        Cart Total: €{(grossTotal + shiping).toFixed(2)}
+      </p>
+      <Button className="m-2" onClick={() => setThankYou(true)}>
+        <p className="text-2xl">Checkout</p>
+      </Button>
+      {thankYou ? <p className="text-2lg font-bold">Thank you!</p> : null}
     </div>
   );
 }

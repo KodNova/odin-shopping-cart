@@ -11,12 +11,12 @@ type ShopItemCardProps = {
 export default function ShopItemCard({ item, addToCart }: ShopItemCardProps) {
   const [quantity, setQuantity] = useState<number>(1);
   return (
-    <div className="flex w-1/5 flex-col items-center gap-2 rounded-2xl bg-slate-400 p-2">
+    <div className="flex flex-col items-center gap-2 rounded-2xl bg-slate-400 p-2">
       <img className="w-30 rounded-lg" src={item.image} alt={item.title} />
-      <h3 className="w-4/5 overflow-hidden text-center text-ellipsis whitespace-nowrap">
+      <h3 className="w-4/5 overflow-hidden text-center text-2xl text-ellipsis whitespace-nowrap">
         {item.title}
       </h3>
-      <p>€{item.price.toFixed(2)}</p>
+      <p className="text-2xl">€{item.price.toFixed(2)}</p>
       <div className="flex gap-2">
         <Input
           type="number"

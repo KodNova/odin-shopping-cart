@@ -6,12 +6,16 @@ export default function Homepage() {
     <>
       <Header />
       <div className="flex justify-center">
-        <div className="w-30% flex justify-center rounded-2xl bg-slate-400 p-3">
+        <div className="w-30% flex justify-center rounded-2xl bg-slate-400 p-3 text-center shadow-lg shadow-black">
           <div className="flex flex-col items-center">
-            <h1 className="text-2xl">Welcome to Minimalist Menswear</h1>
-            <p>Curated collection of timeless essentials for the modern man.</p>
+            <h1 className="text-4xl font-bold">
+              Welcome to Minimalist Menswear
+            </h1>
+            <p className="mb-2 text-3xl">
+              Curated collection of timeless essentials for the modern man.
+            </p>
             <Link to="/shop" className={buttonVariants({ variant: "outline" })}>
-              Shop Now
+              <p className="text-2xl">Shop Now</p>
             </Link>
           </div>
         </div>

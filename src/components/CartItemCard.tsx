@@ -15,15 +15,22 @@ export default function CartItemCard({
   return (
     <div className="flex items-center justify-between gap-2 rounded-2xl bg-slate-400 p-2">
       <img className="w-30 rounded-lg" src={item.image} alt={item.title} />
-      <h3 className="w-3/5 text-center">{item.title}</h3>
-      <p>€{item.price.toFixed(2)}</p>
+      <h3 className="w-3/5 text-center text-2xl">{item.title}</h3>
+      <p className="text-2xl">€{item.price.toFixed(2)}</p>
       <div className="flex gap-2">
-        <Button onClick={() => decreaseQuantity(item, -1)}>-</Button>
-        <p>{item.quantity}</p>
-        <Button onClick={() => addToCart(item, 1)}>+</Button>
+        <Button className="text-xl" onClick={() => decreaseQuantity(item, -1)}>
+          -
+        </Button>
+        <p className="text-2xl">{item.quantity}</p>
+        <Button className="text-xl" onClick={() => addToCart(item, 1)}>
+          +
+        </Button>
       </div>
-      <p>Total: €{(item.price * item.quantity).toFixed(2)}</p>
-      <Button onClick={() => decreaseQuantity(item, -item.quantity)}>
+      <p className="text-2xl">€{(item.price * item.quantity).toFixed(2)}</p>
+      <Button
+        className="text-xl"
+        onClick={() => decreaseQuantity(item, -item.quantity)}
+      >
         Remove
       </Button>
     </div>
