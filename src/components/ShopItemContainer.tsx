@@ -8,7 +8,7 @@ export default function ShopItemContainer() {
   const { addToCart } = useCartContext();
 
   if (!items) {
-    return <p>Loading...</p>;
+    return <p className="bg-slate-400 text-center text-4xl">Loading...</p>;
   }
 
   return (
